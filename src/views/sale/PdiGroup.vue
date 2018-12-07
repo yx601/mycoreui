@@ -8,9 +8,9 @@
         </b-col>
         <b-col cols="12" sm="12" md="4" offset="2" lg="4">
           <h5>人流量分析</h5>
-          <div class="chart-wrapper">
+          <!--<div class="chart-wrapper">-->
             <pdi-pie-chart chartId="chart-pie-01"/>
-          </div>
+          <!--</div>-->
         </b-col>
       </b-row>
     </div>
