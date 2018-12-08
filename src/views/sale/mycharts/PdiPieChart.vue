@@ -1,66 +1,24 @@
 <template>
-  <v-chart :options="polar"/>
+  <ve-pie :data="chartData" :settings="chartSettings"></ve-pie>
 </template>
 
-<style>
-  .echarts {
-    width: 100%;
-    height: 100%;
-  }
-</style>
-
 <script>
-  import ECharts from 'vue-echarts/components/ECharts'
-  import 'echarts/lib/chart/line'
-  import 'echarts/lib/component/polar'
-
   export default {
-    components: {
-      'v-chart': ECharts
-    },
-    data: function () {
-      let data = []
-
-      for (let i = 0; i <= 360; i++) {
-        let t = i / 180 * Math.PI
-        let r = Math.sin(2 * t) * Math.cos(2 * t)
-        data.push([r, i])
+    data () {
+      this.chartSettings = {
+        limitShowNum: 5
       }
-
       return {
-        polar: {
-          title: {
-            text: '极坐标双数值轴'
-          },
-          legend: {
-            data: ['line']
-          },
-          polar: {
-            center: ['50%', '54%']
-          },
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'cross'
-            }
-          },
-          angleAxis: {
-            type: 'value',
-            startAngle: 0
-          },
-          radiusAxis: {
-            min: 0
-          },
-          series: [
-            {
-              coordinateSystem: 'polar',
-              name: 'line',
-              type: 'line',
-              showSymbol: false,
-              data: data
-            }
-          ],
-          animationDuration: 2000
+        chartData: {
+          columns: ['日期', '访问用户'],
+          rows: [
+            { '日期': '1/1', '访问用户': 1393 },
+            { '日期': '1/2', '访问用户': 3530 },
+            { '日期': '1/3', '访问用户': 2923 },
+            { '日期': '1/4', '访问用户': 1723 },
+            { '日期': '1/5', '访问用户': 3792 },
+            { '日期': '1/6', '访问用户': 4593 }
+          ]
         }
       }
     }

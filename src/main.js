@@ -8,11 +8,12 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
-
+import VCharts from 'v-charts'
 // todo
 // cssVars()
 
 Vue.use(BootstrapVue)
+Vue.use(VCharts)
 
 /* eslint-disable no-new */
 new Vue({
