@@ -200,11 +200,14 @@
 <script>
   import { Callout } from '@coreui/vue'
   import mdiChart from './mycharts/MdiChart'
+  import CalloutChartExample from './mycharts/CalloutChartExample'
+
     export default {
         name: "MdiGroup",
       components: {
           mdiChart,
-        Callout
+        Callout,
+        CalloutChartExample
       }
     }
 </script>
