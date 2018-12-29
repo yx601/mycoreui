@@ -1,50 +1,29 @@
-<script>
-  import { Line } from 'vue-chartjs'
-  import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
-  import { hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
+<template>
+  <div>
+    <ve-line :data="chartData"></ve-line>
+  </div>
+</template>
 
+<script>
+  import VeLine from 'v-charts/lib/line.common'
   export default {
     components: {
-      hexToRgba,
-      CustomTooltips
+      VeLine
     },
-    extends: Line,
-    mounted () {
-      this.renderChart(
-        {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [
-            {
-              label: 'Data One',
-              borderColor: hexToRgba('#E46651', 90),
-              // backgroundColor: hexToRgba('#E46651', 90),
-              data: [30, 39, 10, 50, 30, 70, 35]
-            },
-            {
-              label: 'Data Two',
-              borderColor: hexToRgba('#00D8FF', 90),
-              // backgroundColor: hexToRgba('#00D8FF', 90),
-              data: [39, 80, 40, 35, 40, 20, 45]
-            }
+    data () {
+      return {
+        chartData: {
+          columns: ['日期', '访问用户', '下单用户', '下单率'],
+          rows: [
+            { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
+            { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
+            { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
+            { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
+            { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
+            { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
           ]
-        },
-        {
-          responsive: true,
-          maintainAspectRatio: true,
-          tooltips: {
-            enabled: false,
-            custom: CustomTooltips,
-            intersect: true,
-            mode: 'index',
-            position: 'nearest',
-            callbacks: {
-              labelColor: function (tooltipItem, chart) {
-                return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].backgroundColor }
-              }
-            }
-          }
         }
-      )
+      }
     }
   }
 </script>

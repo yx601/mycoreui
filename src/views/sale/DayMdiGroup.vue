@@ -1,27 +1,83 @@
 <template>
-  <ve-pie :data="chartData" :settings="chartSettings"></ve-pie>
+  <div>
+    <b-row>
+      <b-col lg="4">
+        <h4 style="border-bottom-style:solid;border-color:#5a4980">发展量</h4>
+        <ve-pie :data="fzlData" :settings="fzlSetting"></ve-pie>
+      </b-col>
+      <b-col lg="4">
+        <h4 style="border-bottom-style:solid;border-color:#5a4980">积分</h4>
+        <ve-pie :data="fjData"></ve-pie>
+      </b-col>
+      <b-col lg="2" >
+        <div class="text-center center-vertical">
+          <h2>100</h2>
+          <h4>发展量</h4>
+        </div>
+      </b-col>
+      <b-col lg="2" >
+        <div class="text-center center-vertical">
+          <h2>100</h2>
+          <h4>积分</h4>
+        </div>
+      </b-col>
+    </b-row>
+  </div>
+
 </template>
 
 <script>
   export default {
     data () {
-      this.chartSettings = {
-        dimension: '日期',
-        metrics: '访问用户'
+      this.fzlSetting = {
+        level: [
+          ['天翼用户','宽带用户', 'IPTV' ],
+          ['单手机','融合1','副卡','包年', '包月','融合2','IPTV1']
+        ]
       }
       return {
-        chartData: {
-          columns: ['日期', '访问用户'],
+        fzlData: {
+          columns: ['类型', '用户数'],
           rows: [
-            { '日期': '1/1', '访问用户': 1393 },
-            { '日期': '1/2', '访问用户': 3530 },
-            { '日期': '1/3', '访问用户': 2923 },
-            { '日期': '1/4', '访问用户': 1723 },
-            { '日期': '1/5', '访问用户': 3792 },
-            { '日期': '1/6', '访问用户': 4593 }
+            { '类型': '天翼用户', '用户数': 1000 },
+            { '类型': '宽带用户', '用户数': 2000 },
+            { '类型': 'IPTV', '用户数': 50 },
+            { '类型': '单手机', '用户数': 200 },
+            { '类型': '融合1', '用户数': 400 },
+            { '类型': '副卡', '用户数': 400 },
+            { '类型': '包年', '用户数': 1500 },
+            { '类型': '包月', '用户数': 400 },
+            { '类型': '融合2', '用户数': 100 },
+            { '类型': 'IPTV1', '用户数': 50 },
+          ]
+        },
+        fjData: {
+          columns:['类型', '用户数'],
+          rows:[
+            {'类型': '天翼用户', '用户数': 1000 },
+            {'类型': '宽带用户', '用户数': 300 },
           ]
         }
       }
     }
   }
 </script>
+
+<style scoped>
+  .center {
+    width: auto;
+    /*display: table;*/
+    margin-left: auto;
+    margin-right: auto;
+    display: table-cell;
+  }
+  .center-vertical{
+
+    position: relative;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+  }
+</style>
