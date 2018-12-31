@@ -4,8 +4,8 @@
       <div slot="header">
         <strong>筛选条件 </strong> <small>hot</small>
       </div>
-      <b-row>
-        <b-col  lg="2">
+      <b-row >
+        <b-col  lg="3">
           <b-button-group>
             <b-button variant="success" :class="{focus:dateKey==='day'}" @click="selDate('day')">本日</b-button>
             <b-button variant="warning" :class="{focus:dateKey==='week'}" @click="selDate('week')">本周</b-button>
@@ -41,7 +41,15 @@
           </b-form-select>
         </b-col>
       </b-row>
-
+      <b-row  class="mt-3">
+        <b-col >
+          <b-form-input type="date" id="date"></b-form-input>
+        </b-col>
+        -
+        <b-col>
+          <b-form-input type="date" id="date"></b-form-input>
+        </b-col>
+      </b-row>
 
     </b-card>
     <b-card>

@@ -9,27 +9,27 @@ export default {
         text: 'NEW'
       }
     },
-    {
-      title: true,
-      name: '数据管理',
-      class: '',
-      wrapper: {
-        element: '',
-        attributes: {}
-      }
-    },
+    // {
+    //   title: true,
+    //   name: '数据管理',
+    //   class: '',
+    //   wrapper: {
+    //     element: '',
+    //     attributes: {}
+    //   }
+    // },
     {
       name: '销售数据',
       url: '/sale',
       icon: 'cui-cart',
       children: [
         {
-          name: '数据统计',
+          name: '销售数据统计',
           url: '/sale/statistics',
           icon: 'cui-cart'
         },
         {
-          name: '数据管理',
+          name: '销售数据管理',
           url: '/sale/manage',
           icon: 'cui-cart'
         },
@@ -41,14 +41,48 @@ export default {
       icon: 'icon-graph',
       children: [
         {
-          name: '数据统计',
+          name: '经营数据统计',
           url: '/operation/statistics',
           icon: 'icon-graph'
         },
         {
-          name: '数据管理',
+          name: '经营数据管理',
           url: '/operation/manage',
-          icon: 'icon-graph'
+          icon: 'icon-graph',
+          children: [
+            {
+              name: '厅店基本信息',
+              url: '/operation/manage/baseinfo',
+              icon: 'icon-graph',
+            },
+            {
+              name: '佣金展示',
+              url: '/operation/manage/yj',
+              icon: 'icon-graph',
+              children: [
+                {
+                  name: '佣金查询',
+                  url: '/operation/manage/yj/yjquery',
+                  icon: 'icon-graph',
+                },
+                {
+                  name: '积分查询',
+                  url: '/operation/manage/yj/jfquery',
+                  icon: 'icon-graph',
+                },
+                {
+                  name: '结算汇总查询',
+                  url: '/operation/manage/yj/jsquery',
+                  icon: 'icon-graph',
+                },
+                {
+                  name: '运营补贴查询',
+                  url: '/operation/manage/yj/yyquery',
+                  icon: 'icon-graph',
+                },
+              ]
+            },
+          ]
         },
       ]
     },
@@ -58,12 +92,12 @@ export default {
       icon: 'cui-people',
       children: [
         {
-          name: '数据统计',
+          name: '存量数据统计',
           url: '/stock/statistics',
           icon: 'cui-people'
         },
         {
-          name: '数据管理',
+          name: '存量数据管理',
           url: '/stock/manage',
           icon: 'cui-people'
         },

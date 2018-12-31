@@ -15,21 +15,41 @@
           <template v-else>
             <template v-if="item.children">
               <!-- First level dropdown -->
-              <SidebarNavDropdown :key="index" :name="item.name" :url="item.url" :icon="item.icon">
+              <SidebarNavDropdown  :key="index" :name="item.name" :url="item.url" :icon="item.icon">
                 <template v-for="(childL1, index1) in item.children">
                   <template v-if="childL1.children">
                     <!-- Second level dropdown -->
                     <SidebarNavDropdown class="ml-2" :key="index1" :name="childL1.name" :url="childL1.url" :icon="childL1.icon">
-                      <li :key="index2" class="nav-item ml-2" v-for="(childL2, index2) in childL1.children">
+                      <template v-for="(childL2, index2) in childL1.children">
                         <template v-if="childL2.children">
-                          <li :key="index3" class="nav-item ml-2" v-for="(childL3,index3) in childL2.children">
-                            <SidebarNavLink :name="childL3.name" :url="childL3.url" :icon="childL3.icon" :badge="childL3.badge" :variant="childL3.variant" :attributes="childL3.attributes" />
-                          </li>
+                          <!-- Third Level dropdown -->
+                          <SidebarNavDropdown class="ml-2"  :key="index2" :name="childL2.name" :url="childL2.url" :icon="childL2.icon">
+                            <template v-for="(childL3,index3) in childL2.children">
+                              <template v-if="childL3.children">
+                                <!-- Fourth Level dropdown -->
+                                <SidebarNavDropdown class="ml-2" :key="index3" :name="childL3.name" :url="childL3.url" :icon="childL3.icon">
+                                  <template v-for="(childL4,index4) in childL3.children">
+                                    <li :key="index4" :classes="item.class" class="ml-2">
+                                      <SidebarNavLink :name="childL4.name" :url="childL4.url" :icon="childL4.icon" :badge="childL4.badge" :variant="childL4.variant" :attributes="childL4.attributes" />
+                                    </li>
+                                  </template>
+                                </SidebarNavDropdown>
+                              </template>
+                              <template v-else>
+                                <li :key="index3" :classes="item.class" class="ml-2">
+                                  <SidebarNavLink  :name="childL3.name" :url="childL3.url" :icon="childL3.icon" :badge="childL3.badge" :variant="childL3.variant" :attributes="childL3.attributes" />
+                                </li>
+                              </template>
+                            </template>
+                          </SidebarNavDropdown>
+
                         </template>
                         <template v-else>
-                          <SidebarNavLink class="ml-2" :name="childL2.name" :url="childL2.url" :icon="childL2.icon" :badge="childL2.badge" :variant="childL2.variant" :attributes="childL2.attributes" />
+                          <li :key="index2" :classes="item.class" class="ml-2">
+                            <SidebarNavLink  :name="childL2.name" :url="childL2.url" :icon="childL2.icon" :badge="childL2.badge" :variant="childL2.variant" :attributes="childL2.attributes" />
+                          </li>
                         </template>
-                      </li>
+                      </template>
                     </SidebarNavDropdown>
                   </template>
                   <template v-else>
@@ -108,5 +128,8 @@
     position: absolute;
     height: 100%;
     margin: auto;
+  }
+  .sidebar .nav-dropdown.open > .nav-dropdown-items {
+    overflow-x: hidden;
   }
 </style>

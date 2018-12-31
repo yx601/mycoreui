@@ -2,21 +2,21 @@
   <div>
     <b-row>
       <b-col lg="4">
-        <h4 style="border-bottom-style:solid;border-color:#5a4980">发展量</h4>
+        <h5 class="downline">发展量</h5>
         <ve-pie :data="fzlData" :settings="fzlSetting"></ve-pie>
       </b-col>
       <b-col lg="4">
-        <h4 style="border-bottom-style:solid;border-color:#5a4980">积分</h4>
+        <h5 class="downline">积分</h5>
         <ve-pie :data="fjData"></ve-pie>
       </b-col>
-      <b-col lg="2" >
-        <div class="text-center center-vertical">
+      <b-col lg="2">
+        <div class="text-center center-vertical"  style="border-left:1px dotted darkgray;">
           <h2>100</h2>
           <h4>发展量</h4>
         </div>
       </b-col>
       <b-col lg="2" >
-        <div class="text-center center-vertical">
+        <div class="text-center center-vertical" style="border-left:1px dotted darkgray;">
           <h2>100</h2>
           <h4>积分</h4>
         </div>
@@ -79,5 +79,11 @@
 
     transform: translateY(-50%);
 
+  }
+  .downline{
+    border-bottom-style:solid;
+    border-color:#5a4980;
+    border-bottom-width: 1px;
+    padding:3px
   }
 </style>

@@ -5,28 +5,7 @@
         <strong>筛选条件 </strong> <small>hot</small>
       </div>
       <b-row >
-        <b-col  lg="3">
-          <b-button-group>
-            <b-button variant="success" :class="{focus:dateKey==='day'}" @click="selDate('day')">本日</b-button>
-            <b-button variant="warning" :class="{focus:dateKey==='week'}" @click="selDate('week')">本周</b-button>
-            <b-button variant="danger" :class="{focus:dateKey==='year'}" @click="selDate('year')">本年</b-button>
-          </b-button-group>
-        </b-col>
-        <b-col lg="2">
-          <b-form-select id="basicSelect"
-                         :plain="true"
-                         :options="['选择经营单位','Option 1', 'Option 2', 'Option 3']"
-                         value="选择经营单位">
-          </b-form-select>
-        </b-col>
-        <b-col lg="2">
-          <b-form-select id="basicSelect"
-                         :plain="true"
-                         :options="['选择支局','Option 1', 'Option 2', 'Option 3']"
-                         value="选择支局">
-          </b-form-select>
-        </b-col>
-        <b-col lg="2">
+        <b-col lg="3">
           <b-form-select id="basicSelect"
                          :plain="true"
                          :options="['选择代理商','Option 1', 'Option 2', 'Option 3']"
@@ -40,92 +19,105 @@
                          value="选择厅店">
           </b-form-select>
         </b-col>
-      </b-row>
-      <b-row  class="mt-3">
-        <b-col >
+        <b-col lg="2">
           <b-form-input type="date" id="date"></b-form-input>
         </b-col>
         -
-        <b-col>
+        <b-col lg="2">
           <b-form-input type="date" id="date"></b-form-input>
         </b-col>
       </b-row>
-
     </b-card>
+  <b-card>
+    <div slot="header">
+      <strong>基本信息</strong>
+    </div>
+    <b-row>
+      <b-col lg="9">
+        <b-row>
+          <b-col>
+            <i class="fa fa-2x fa-home"></i><strong style="font-size:16px"> 经营主体名称：天香营业厅</strong>
+          </b-col>
+          <b-col>
+            <i class="fa fa-2x fa-user-o"></i><strong style="font-size:16px"> 法人名称：王某某</strong>
+          </b-col>
+          <b-col>
+            <i class="fa fa-2x fa-flag-o"></i><strong style="font-size:16px"> 商积分排名：1</strong>
+          </b-col>
+        </b-row>
+        <b-row class="mt-2">
+          <b-col>
+            <i class="fa fa-2x fa-calendar"></i><strong style="font-size:16px"> 协议到期时间：2018-12-31</strong>
+          </b-col>
+          <b-col>
+            <i class="fa fa-2x fa-phone"></i><strong style="font-size:16px"> 联系号码：1391112222</strong>
+          </b-col>
+          <b-col>
+            <i class="fa fa-2x fa-check-square-o"></i><strong style="font-size:16px"> 商类型：本地商</strong>
+          </b-col>
+        </b-row>
+      </b-col>
+      <b-col lg="1" class="mr-lg-4">
+        <img src="img/test.jpg" alt="图1" width="100" height="100">
+      </b-col>
+      <b-col lg="1" >
+        <img src="img/test.jpg" alt="图1" width="100" height="100">
+      </b-col>
+    </b-row>
+  </b-card>
     <b-card>
       <div slot="header">
-        <div class="font-xl float-left">业务发展量统计</div>
-        <b-button-group class="float-right">
-          <b-button variant="success" :class="{focus:fzl}" @click="fzlClick">发展量</b-button>
-          <b-button variant="info" :class="{focus:fzfx}" @click="fzfxClick">发展分析</b-button>
-        </b-button-group>
+        <strong>佣金</strong>
       </div>
-    <template v-if="dateKey==='day'">
-      <template v-if="fzl">
-        <keep-alive>
-          <day-mdi-group></day-mdi-group>
-        </keep-alive>
-      </template>
-      <template v-else>
-        <keep-alive>
-          <fzfx></fzfx>
-        </keep-alive>
-      </template>
-    </template>
-    <template v-else>
-      <template v-if="fzl">
-        <keep-alive>
-          <week-mdi-group></week-mdi-group>
-        </keep-alive>
-      </template>
-      <template v-else>
-        <keep-alive>
-          <fzfx></fzfx>
-        </keep-alive>
-      </template>
-    </template>
+      <yj-group></yj-group>
     </b-card>
-    <!--<b-card>-->
-      <!--<div slot="header">-->
-        <!--<div class="font-xl float-left">人流量统计</div>-->
-        <!--<b-button-group class="float-right">-->
-          <!--<b-button variant="success">人流统计</b-button>-->
-          <!--<b-button variant="info">转化分析</b-button>-->
-        <!--</b-button-group>-->
-      <!--</div>-->
-      <!--<pdi-group></pdi-group>-->
-    <!--</b-card>-->
+  <b-row>
+    <b-col lg="12">
+      <b-card>
+        <div slot="header">
+          <strong>发展质量监控</strong>
+        </div>
+        <fzzljk></fzzljk>
+      </b-card>
+    </b-col>
+
+  </b-row>
+    <b-row>
+      <b-col lg="12">
+        <b-card>
+          <div slot="header">
+            <strong>收益</strong>
+          </div>
+          <shouyi></shouyi>
+        </b-card>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
 <script>
-import BarExample from '../charts/BarExample'
-import LineExample from '../charts/LineExample'
-import DoughnutExample from '../charts/DoughnutExample'
-import RadarExample from '../charts/RadarExample'
-import PieExample from '../charts/PieExample'
-import PolarAreaExample from '../charts/PolarAreaExample'
-import DayMdiGroup from "./DayMdiGroup"
-import WeekMdiGroup from "./WeekMdiGroup"
-import PdiGroup from "./PdiGroup"
-import fzfx from "./fzfx"
+// import BarExample from '../charts/BarExample'
+// import LineExample from '../charts/LineExample'
+// import DoughnutExample from '../charts/DoughnutExample'
+// import RadarExample from '../charts/RadarExample'
+// import PieExample from '../charts/PieExample'
+// import PolarAreaExample from '../charts/PolarAreaExample'
+import yjGroup from './yjGroup'
+import fzzljk from './fzzljk'
+import shouyi from './shouyi'
 
 export default {
   name: "statistics",
   components: {
-    WeekMdiGroup,
-    BarExample,
-    LineExample,
-    DoughnutExample,
-    RadarExample,
-    PieExample,
-    PolarAreaExample,
-    PdiGroup,
-    DayMdiGroup,
-    fzfx
-  },
-  computed:{
-    currentTabComponent:'MdiGroup'
+    // BarExample,
+    // LineExample,
+    // DoughnutExample,
+    // RadarExample,
+    // PieExample,
+    // PolarAreaExample,
+    yjGroup,
+    fzzljk,
+    shouyi
   },
   data:()=>{
     return {

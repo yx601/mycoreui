@@ -61,6 +61,10 @@ const User = () => import('@/views/users/User')
 // 销售数据
 const saleStatistics = () => import('@/views/sale/statistics')
 
+// 经营数据
+const operStatistics = () => import('@/views/operation/statistics')
+const operBaseInfo = () => import('@/views/operation/baseinfo')
+
 Vue.use(Router)
 
 export default new Router({
@@ -91,13 +95,47 @@ export default new Router({
           children: [
             {
               path: 'statistics',
-              name: '数据统计',
+              name: '销售数据统计',
               component: saleStatistics
             },
             {
               path: 'manage',
-              name: '数据管理',
+              name: '销售数据管理',
               component: Cards
+            },
+          ]
+        },
+        {
+          path: 'operation',
+          redirect: '/operation/statistics',
+          name: '经营数据',
+          component: {
+            render(c) {
+              return c('router-view')
+            }
+          },
+          children: [
+            {
+              path: 'statistics',
+              name: '经营数据统计',
+              component: operStatistics
+            },
+            {
+              path: 'manage',
+              name: '经营数据管理',
+              redirect: '/operation/manage/baseinfo',
+              component: {
+                render(c) {
+                  return c('router-view')
+                }
+              },
+              children: [
+                {
+                  path: 'baseinfo',
+                  name: '厅店基本信息',
+                  component: operBaseInfo
+                }
+              ]
             },
           ]
         },
